@@ -1,0 +1,49 @@
+Bolton project
+Case study 1
+WTO Trade Monitoring and Analysis System
+
+Participants:
+Emmanuelle Ganne
+Elma Muslic Jonas
+Kathryn Lundquist
+Josefita Pardo de Leon
+Cedric Pene
+Ankai Xu
+
+Description of the project
+
+
+1.	Problem identification and scoping
+A.	What are we trying to solve?
+Several WTO committees and councils serve as a forum for Members to raise trade concerns regarding specific measures that may affect their trade. These discussions can help ease trade tensions by providing further information and clarification, working towards mutually satisfactory solutions.
+The WTO Secretariat has developed a Trade Concerns Database that allows users to search for trade concerns raised in the Council for Trade in Goods (CTG), Committee on Market Access (CMA), the Committee on Import Licensing (IL), the Committee on Sanitary and Phytosanitary Measures (SPS) and the Committee on Technical Barriers to Trade (TBT). 
+However, while some trade concerns reference the Harmonized System (HS) or International Classification for Standards (ICS) codes, many only provide a general description of the product(s) involved. This lack of specificity makes it challenging to associate the trade concern with a particular product and to accurately evaluate the measure's impact on trade.
+B.	What do we want to use AI for?
+•	The objective of the project would be to train an AI model to link trade concerns raised by WTO Members to specific products and trade flows. This would include three steps:
+o	First, train the AI model to match product descriptions (as per the title of the trade concerns and related statements made by WTO Members – see the file "trade_concerns_statements") with HS codes using the HS/ICS concordance table to help identify the relevant products covered by the trade concerns. 
+
+o	Second, once the product codes are identified, use AI to link the trade concern to related trade flows.
+
+o	Third, use AI tools to assist in identifying classes of measures, trends and patterns in the trade concerns regarding elements such as the subject matter, products covered, trade impact and Members raising and responding to the concerns. 
+
+Since some variables are non-numerical, the tasks are expected to be classification ones.
+
+C.	Define the scope of the project
+•	The project will leverage an existing database of trade concerns raised by WTO members and identify the relevant products, on the basis of HS codes, covered by these trade concerns as well as its evolution since the WTO was established in 1995. Trade concerns are a useful indicator of non-tariff measures that WTO members implement that may affect trade.
+
+D.	Objective/deliverables
+•	Add HS codes when they are missing in the text description of the trade concern. 
+•	Link trade concerns to specific products and trade flows in order to assess the impact of related measures on trade flows.
+•	Develop a classification of trade concerns and identify potential trends and patterns based on their different parameters. 
+
+2.	Data sources
+Trade concerns database: https://tradeconcerns.wto.org/en. Description of the products covered in the Harmonized System (HS)
+Concordance table between the HS and ICS codes.
+Trade data: https://stats.wto.org/ or UN Comtrade
+
+3.	Methodology
+For step 1: 
+- AI can be trained on a subset of trade concerns where products have been identified using HS or ICS codes (see the file "trade_concerns_HS-ICS"; the subset to be used for the training corresponds to the trade concerns that have an HS code or ICS code mentioned in columns L or M; trade concerns are identified by their IMS ID in column C). The file "trade_concerns_statements" includes statements in which WTO Members raising a trade concern provide more detailed information about the products covered than what is mentioned in the title of the trade concern. The statements corresponding to the trade concerns with an HS/ICS code can be used to train the AI model (the IMS ID can be used to match the two files - "trade_concerns_HS-ICS" and "trade_concerns_statements"). 
+- Using this training dataset, the AI model can then identify the HS code of trade concerns that do not specify an HS/ICS code. The titles of the trade concerns in column E of "trade_concerns_HS-ICS" and the statements contained in column F of "trade_concerns_statements" can be used to identify the products covered by the trade concerns. 
+For step 2: AI tool would link datasets of trade concerns with datasets on trade flows using the HS codes to connect the two sets of data.
+For step 3: AI tool would define classes of trade concerns and identify trends using trade concerns datasets. 
